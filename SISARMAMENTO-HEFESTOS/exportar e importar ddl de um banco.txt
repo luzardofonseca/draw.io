@@ -1,0 +1,62 @@
+--criar esquema
+-- DROP SCHEMA armamento;
+
+CREATE SCHEMA armamento AUTHORIZATION postgres;
+
+1. Se o servidor do banco de dados PostgreSQL que você deseja copiar está em um 
+servidor remoto (no IP 172.18.4.140), você pode usar o comando pg_dump com as opções 
+necessárias para se conectar a esse servidor. Aqui está como você pode fazer isso:
+
+Passos para Executar:
+Abra um terminal no seu sistema local.
+Execute o comando substituindo seu_usuario pelo seu nome de usuário do PostgreSQL e, se necessário, o caminho e o nome desejado para o arquivo estrutura.sql.
+Informe a senha quando solicitado.
+
+pg_dump --schema-only --schema=armamento --dbname=sejus --host=172.18.4.140 --username=seu_usuario --file=estrutura.sql
+
+Importar o Arquivo .sql no DBeaver 24.1.4
+
+Abrir o DBeaver e Conectar ao Banco de Dados de Destino (psca):
+
+Abra o DBeaver.
+No painel Database Navigator, encontre e clique com o botão direito na conexão com o banco psca, então selecione Connect para garantir que você está conectado.
+Abrir o Editor SQL:
+
+No painel Database Navigator, clique com o botão direito no banco psca (ou no esquema armamento se o esquema já estiver criado).
+Selecione SQL Editor > New SQL Script.
+Carregar o Arquivo .sql:
+
+No editor SQL que se abre, clique no ícone de Abrir Arquivo (geralmente uma folha de papel com um ícone de pasta) ou use o atalho Ctrl + O.
+Navegue até o local onde o arquivo estrutura.sql está salvo e selecione-o.
+Executar o Script SQL:
+
+Após o arquivo ser carregado no editor, você verá o conteúdo do arquivo .sql no editor SQL.
+Clique no botão Execute SQL Statement (ícone de play verde) ou use o atalho Ctrl + Enter para executar o script SQL.
+Verificar a Importação:
+
+Depois de executar o script, você pode verificar no painel Database Navigator se as tabelas e outras estruturas foram criadas corretamente no banco psca.
+Dicas Adicionais:
+Permissões e Conexões: Certifique-se de ter permissões adequadas no banco de dados psca para criar estruturas.
+Arquivo .sql: Verifique se o arquivo .sql contém as instruções necessárias para criar a estrutura do esquema.
+
+
+CASO O SCRIPT NÃO RODE NO CMD FAÇA:
+Verificar e Adicionar PostgreSQL ao PATH:
+Verifique se o PostgreSQL está no PATH:
+
+No terminal, digite pg_dump --version ou psql --version.
+Se o comando retornar a versão do PostgreSQL, significa que o pg_dump está no PATH e você pode usá-lo de qualquer lugar.
+Se o comando não for encontrado, você precisará adicionar o caminho dos binários do PostgreSQL ao PATH.
+Adicionar o PostgreSQL ao PATH (caso necessário):
+
+Windows:
+Abra o Painel de Controle e vá em Sistema e Segurança > Sistema.
+Clique em Configurações avançadas do sistema e, na aba Avançado, clique em Variáveis de Ambiente.
+Na seção Variáveis do Sistema, encontre a variável Path e clique em Editar.
+Adicione o caminho para o diretório bin do PostgreSQL, algo como C:\Program Files\PostgreSQL\<versão>\bin.
+
+
+
+
+
+
